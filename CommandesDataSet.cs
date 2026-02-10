@@ -1,0 +1,3 @@
+﻿namespace VentesApp_Projet
+{
+}
