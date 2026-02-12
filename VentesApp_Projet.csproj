@@ -91,6 +91,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="VentesParAnneeForm.resx">
+      <DependentUpon>VentesParAnneeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="CommandesDataSet.xsc">
       <DependentUpon>CommandesDataSet.xsd</DependentUpon>
     </None>
