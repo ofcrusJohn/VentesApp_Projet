@@ -36,7 +36,7 @@
             // 
             this.listesDesCommandesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listesDesCommandesButton.Location = new System.Drawing.Point(36, 41);
-            this.listesDesCommandesButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listesDesCommandesButton.Margin = new System.Windows.Forms.Padding(4);
             this.listesDesCommandesButton.Name = "listesDesCommandesButton";
             this.listesDesCommandesButton.Size = new System.Drawing.Size(417, 62);
             this.listesDesCommandesButton.TabIndex = 0;
@@ -48,7 +48,7 @@
             // 
             this.listeDesVentesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listeDesVentesButton.Location = new System.Drawing.Point(36, 132);
-            this.listeDesVentesButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listeDesVentesButton.Margin = new System.Windows.Forms.Padding(4);
             this.listeDesVentesButton.Name = "listeDesVentesButton";
             this.listeDesVentesButton.Size = new System.Drawing.Size(417, 62);
             this.listeDesVentesButton.TabIndex = 1;
@@ -63,10 +63,10 @@
             this.ClientSize = new System.Drawing.Size(519, 273);
             this.Controls.Add(this.listeDesVentesButton);
             this.Controls.Add(this.listesDesCommandesButton);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "VentesForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ventes";
-            this.Load += new System.EventHandler(this.VentesForm_Load);
             this.ResumeLayout(false);
 
         }

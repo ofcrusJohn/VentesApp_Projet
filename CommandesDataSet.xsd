@@ -127,10 +127,10 @@ FROM            Products</CommandText>
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="EmployeesTableAdapter" GeneratorDataComponentClassName="EmployeesTableAdapter" Name="Employees" UserDataComponentName="EmployeesTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="NorthwindConnectionString (Settings)" DbObjectName="Northwind.dbo.Employees" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="NorthwindConnectionString (Settings)" DbObjectName="Northwind.dbo.Employees" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Fill" GenerateShortCommands="false" GeneratorSourceName="Fill" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT Employees.Country, SUM([Order Details].UnitPrice * [Order Details].Quantity) AS TotalVentes
+                    <CommandText>SELECT Employees.Country, FORMAT(SUM([Order Details].UnitPrice * [Order Details].Quantity), 'C', 'en-US') AS TotalVentes
 FROM     Employees INNER JOIN
                   Orders ON Employees.EmployeeID = Orders.EmployeeID INNER JOIN
                   [Order Details] ON Orders.OrderID = [Order Details].OrderID
@@ -193,17 +193,23 @@ GROUP BY Employees.Country</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Employees" msprop:Generator_RowEvHandlerName="EmployeesRowChangeEventHandler" msprop:Generator_RowDeletedName="EmployeesRowDeleted" msprop:Generator_RowDeletingName="EmployeesRowDeleting" msprop:Generator_RowEvArgName="EmployeesRowChangeEvent" msprop:Generator_TablePropName="Employees" msprop:Generator_RowChangedName="EmployeesRowChanged" msprop:Generator_RowChangingName="EmployeesRowChanging" msprop:Generator_TableClassName="EmployeesDataTable" msprop:Generator_RowClassName="EmployeesRow" msprop:Generator_TableVarName="tableEmployees" msprop:Generator_UserTableName="Employees">
+        <xs:element name="Employees" msprop:Generator_RowEvHandlerName="EmployeesRowChangeEventHandler" msprop:Generator_RowDeletedName="EmployeesRowDeleted" msprop:Generator_RowDeletingName="EmployeesRowDeleting" msprop:Generator_RowEvArgName="EmployeesRowChangeEvent" msprop:Generator_TablePropName="Employees" msprop:Generator_RowChangedName="EmployeesRowChanged" msprop:Generator_UserTableName="Employees" msprop:Generator_RowChangingName="EmployeesRowChanging" msprop:Generator_RowClassName="EmployeesRow" msprop:Generator_TableClassName="EmployeesDataTable" msprop:Generator_TableVarName="tableEmployees">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Country" msprop:Generator_ColumnPropNameInRow="Country" msprop:Generator_ColumnPropNameInTable="CountryColumn" msprop:Generator_ColumnVarNameInTable="columnCountry" msprop:Generator_UserColumnName="Country" minOccurs="0">
+              <xs:element name="Country" msprop:Generator_ColumnPropNameInTable="CountryColumn" msprop:Generator_ColumnPropNameInRow="Country" msprop:Generator_UserColumnName="Country" msprop:Generator_ColumnVarNameInTable="columnCountry" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="15" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="TotalVentes" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="TotalVentes" msprop:Generator_ColumnPropNameInTable="TotalVentesColumn" msprop:Generator_ColumnVarNameInTable="columnTotalVentes" msprop:Generator_UserColumnName="TotalVentes" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TotalVentes" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="TotalVentes" msprop:Generator_ColumnPropNameInTable="TotalVentesColumn" msprop:Generator_ColumnVarNameInTable="columnTotalVentes" msprop:Generator_UserColumnName="TotalVentes" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -225,8 +231,8 @@ GROUP BY Employees.Country</CommandText>
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="CustOrdersOrders_Order_x0020_Details" msdata:parent="CustOrdersOrders" msdata:child="Order_x0020_Details" msdata:parentkey="OrderID" msdata:childkey="OrderID" msprop:Generator_UserParentTable="CustOrdersOrders" msprop:Generator_UserChildTable="Order Details" msprop:Generator_RelationVarName="relationCustOrdersOrders_Order_Details" msprop:Generator_ChildPropName="GetOrder_DetailsRows" msprop:Generator_ParentPropName="CustOrdersOrdersRow" msprop:Generator_UserRelationName="CustOrdersOrders_Order Details" />
-      <msdata:Relationship name="FK_Order_Details_Products" msdata:parent="Order_x0020_Details" msdata:child="Products" msdata:parentkey="ProductID" msdata:childkey="ProductID" msprop:Generator_UserParentTable="Order Details" msprop:Generator_UserChildTable="Products" msprop:Generator_RelationVarName="relationFK_Order_Details_Products" msprop:Generator_ChildPropName="GetProductsRows" msprop:Generator_ParentPropName="Order_DetailsRow" msprop:Generator_UserRelationName="FK_Order_Details_Products" />
+      <msdata:Relationship name="CustOrdersOrders_Order_x0020_Details" msdata:parent="CustOrdersOrders" msdata:child="Order_x0020_Details" msdata:parentkey="OrderID" msdata:childkey="OrderID" msprop:Generator_UserParentTable="CustOrdersOrders" msprop:Generator_UserChildTable="Order Details" msprop:Generator_RelationVarName="relationCustOrdersOrders_Order_Details" msprop:Generator_ChildPropName="GetOrder_DetailsRows" msprop:Generator_UserRelationName="CustOrdersOrders_Order Details" msprop:Generator_ParentPropName="CustOrdersOrdersRow" />
+      <msdata:Relationship name="FK_Order_Details_Products" msdata:parent="Order_x0020_Details" msdata:child="Products" msdata:parentkey="ProductID" msdata:childkey="ProductID" msprop:Generator_UserParentTable="Order Details" msprop:Generator_UserChildTable="Products" msprop:Generator_RelationVarName="relationFK_Order_Details_Products" msprop:Generator_ChildPropName="GetProductsRows" msprop:Generator_UserRelationName="FK_Order_Details_Products" msprop:Generator_ParentPropName="Order_DetailsRow" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

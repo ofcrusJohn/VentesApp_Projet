@@ -30,10 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label totalVentesLabel;
-            this.commandesDataSet = new VentesApp_Projet.CommandesDataSet();
-            this.employeesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.employeesTableAdapter = new VentesApp_Projet.CommandesDataSetTableAdapters.EmployeesTableAdapter();
-            this.tableAdapterManager = new VentesApp_Projet.CommandesDataSetTableAdapters.TableAdapterManager();
             this.fillToolStrip = new System.Windows.Forms.ToolStrip();
             this.countryToolStripLabel = new System.Windows.Forms.ToolStripLabel();
             this.countryToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
@@ -43,33 +39,24 @@
             this.dateFinToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.fillToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.totalVentesLabel1 = new System.Windows.Forms.Label();
+            this.employeesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.commandesDataSet = new VentesApp_Projet.CommandesDataSet();
+            this.employeesTableAdapter = new VentesApp_Projet.CommandesDataSetTableAdapters.EmployeesTableAdapter();
+            this.tableAdapterManager = new VentesApp_Projet.CommandesDataSetTableAdapters.TableAdapterManager();
             totalVentesLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.commandesDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource)).BeginInit();
             this.fillToolStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.commandesDataSet)).BeginInit();
             this.SuspendLayout();
             // 
-            // commandesDataSet
+            // totalVentesLabel
             // 
-            this.commandesDataSet.DataSetName = "CommandesDataSet";
-            this.commandesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // employeesBindingSource
-            // 
-            this.employeesBindingSource.DataMember = "Employees";
-            this.employeesBindingSource.DataSource = this.commandesDataSet;
-            // 
-            // employeesTableAdapter
-            // 
-            this.employeesTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.Connection = null;
-            this.tableAdapterManager.Order_DetailsTableAdapter = null;
-            this.tableAdapterManager.ProductsTableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = VentesApp_Projet.CommandesDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            totalVentesLabel.AutoSize = true;
+            totalVentesLabel.Location = new System.Drawing.Point(12, 90);
+            totalVentesLabel.Name = "totalVentesLabel";
+            totalVentesLabel.Size = new System.Drawing.Size(49, 16);
+            totalVentesLabel.TabIndex = 2;
+            totalVentesLabel.Text = "Valeur:";
             // 
             // fillToolStrip
             // 
@@ -132,18 +119,9 @@
             this.fillToolStripButton.Text = "Obtenir la valeur";
             this.fillToolStripButton.Click += new System.EventHandler(this.fillToolStripButton_Click);
             // 
-            // totalVentesLabel
-            // 
-            totalVentesLabel.AutoSize = true;
-            totalVentesLabel.Location = new System.Drawing.Point(12, 90);
-            totalVentesLabel.Name = "totalVentesLabel";
-            totalVentesLabel.Size = new System.Drawing.Size(49, 16);
-            totalVentesLabel.TabIndex = 2;
-            totalVentesLabel.Text = "Valeur:";
-            // 
             // totalVentesLabel1
             // 
-            this.totalVentesLabel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.totalVentesLabel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.totalVentesLabel1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.employeesBindingSource, "TotalVentes", true));
             this.totalVentesLabel1.Location = new System.Drawing.Point(146, 90);
             this.totalVentesLabel1.Name = "totalVentesLabel1";
@@ -151,21 +129,43 @@
             this.totalVentesLabel1.TabIndex = 3;
             this.totalVentesLabel1.Text = "Total";
             // 
+            // employeesBindingSource
+            // 
+            this.employeesBindingSource.DataMember = "Employees";
+            this.employeesBindingSource.DataSource = this.commandesDataSet;
+            // 
+            // commandesDataSet
+            // 
+            this.commandesDataSet.DataSetName = "CommandesDataSet";
+            this.commandesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // employeesTableAdapter
+            // 
+            this.employeesTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.Connection = null;
+            this.tableAdapterManager.Order_DetailsTableAdapter = null;
+            this.tableAdapterManager.ProductsTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = VentesApp_Projet.CommandesDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
             // VentesParAnneeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 198);
             this.Controls.Add(totalVentesLabel);
             this.Controls.Add(this.totalVentesLabel1);
             this.Controls.Add(this.fillToolStrip);
             this.Name = "VentesParAnneeForm";
-            this.Text = "VentesParAnneeForm";
-            this.Load += new System.EventHandler(this.VentesParAnneeForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.commandesDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource)).EndInit();
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Ventes par année";
             this.fillToolStrip.ResumeLayout(false);
             this.fillToolStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.employeesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.commandesDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
